@@ -82,7 +82,7 @@ public class Homework : MonoBehaviour
         return true;
     }
 
-    Vector3 MoveTowards(Vector3 current, Vector3 target, float maxStep) 
+    Vector3 MoveTowards(Vector3 current, Vector3 target, float maxStep)
     {
         Vector3 direction = target - current;
         float distance = direction.magnitude;
@@ -93,6 +93,4 @@ public class Homework : MonoBehaviour
 
         return current + direction * maxStep;
     }
-
-
 }
