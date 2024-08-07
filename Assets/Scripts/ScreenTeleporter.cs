@@ -14,10 +14,21 @@ public class ScreenTeleporter : MonoBehaviour
 
     void Update()
     {
+        Physics2D.SyncTransforms();  // Varázslat  ***
+
         Rect cameraRect = GetCameraRect();
         Rect selfRect = GetSelfRect();
 
-        // TODO: Teleport
+        if (cameraRect.xMax < selfRect.xMin) // Jobb oldalt
+            transform.position += Vector3.left * (cameraRect.size.x + selfRect.size.x);
+        if (cameraRect.xMin > selfRect.xMax) // Bal oldalt
+            transform.position += Vector3.right * (cameraRect.size.x + selfRect.size.x);
+
+        if (cameraRect.yMax < selfRect.yMin) // Felül
+            transform.position += Vector3.down * (cameraRect.size.y + selfRect.size.y);
+        if (cameraRect.yMin > selfRect.yMax) // Alul
+            transform.position += Vector3.up * (cameraRect.size.y + selfRect.size.y);
+
     }
 
     Rect GetSelfRect()
